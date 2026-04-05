@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import {
   Users, Target, Mail, Phone, MapPin, Menu, X, ChevronRight,
   TrendingUp, ShieldCheck, Award, CheckCircle, ArrowRight, BarChart3,
-  Building2, ClipboardCheck, GraduationCap, Shield, Zap, Star,
-  UserCheck, Calendar, Download, Linkedin, Heart, Briefcase, FileText, Upload
+  Building2, ClipboardCheck, GraduationCap, Shield, Zap, Star, Laptop,
+  UserCheck, Calendar, Download, Linkedin, Briefcase, FileText, Upload
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import rmsLogo from './assets/RMS Logo.png';
@@ -84,10 +84,10 @@ const Navbar = () => {
 /* ── Hero ────────────────────────────────────────────── */
 const Hero = () => {
   const stats = [
-    { v: '12+', l: 'Years Experience', icon: <Award size={18} /> },
-    { v: '7,000+', l: 'Employees Managed', icon: <Users size={18} /> },
-    { v: '100%', l: 'Audit Clearance', icon: <ShieldCheck size={18} /> },
-    { v: '30%', l: 'Faster HR Ops', icon: <TrendingUp size={18} /> },
+    { v: 'Recruitment', l: 'Fast & Reliable', icon: <UserCheck size={18} /> },
+    { v: 'Compliance', l: 'Payroll & Statutory Experts', icon: <ShieldCheck size={18} /> },
+    { v: 'Audits', l: 'Global Support (SEDEX, BSCI)', icon: <ClipboardCheck size={18} /> },
+    { v: 'Specialists', l: 'Manufacturing Industry', icon: <Building2 size={18} /> },
   ];
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center pt-20 overflow-hidden hero-bg">
@@ -99,15 +99,13 @@ const Hero = () => {
             <Star size={11} fill="currentColor" /> Expert HR Solutions · Manufacturing & Apparel
           </motion.span>
           <motion.h1 variants={fadeUp}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] mb-6">
+            className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-[1.08] mb-6">
             Transforming HR for<br />
             <span className="gradient-text">Manufacturing</span> &<br />
             <span className="gradient-text">Apparel</span> Excellence
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg text-slate-400 mb-10 max-w-2xl leading-relaxed">
-            Based in Gurugram, India — RMS Consultancy delivers comprehensive HR solutions tailored to
-            manufacturing and apparel businesses. From statutory compliance to strategic workforce planning.
-          </motion.p>
+            We provide fast and reliable manpower solutions along with complete HR, compliance, and audit support for manufacturing and other industries.</motion.p>
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-20">
             <a href="#contact" className="btn-primary">Schedule Consultation <ArrowRight size={17} /></a>
             <a href="#services" className="btn-secondary">Explore Services <ChevronRight size={17} /></a>
@@ -116,8 +114,8 @@ const Hero = () => {
             {stats.map((s, i) => (
               <motion.div key={i} variants={fadeUp} className="stat-card">
                 <div className="stat-icon">{s.icon}</div>
-                <div className="stat-value">{s.v}</div>
-                <div className="stat-label">{s.l}</div>
+                <div className="text-white font-bold text-lg leading-tight mt-3 mb-1">{s.v}</div>
+                <div className="stat-label !text-xs !mt-0">{s.l}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -130,16 +128,20 @@ const Hero = () => {
 /* ── Services Overview ───────────────────────────────── */
 const ServicesOverview = () => {
   const services = [
-    { title: 'Statutory Compliance', desc: '100% adherence to Indian Labour Laws — Factories Act, EPF, ESI, CLRA, POSH and more.', icon: <Shield size={26} />, color: 'blue', href: '#statutory' },
-    { title: 'Recruitment & Payroll', desc: 'End-to-end workforce management from talent acquisition to accurate payroll processing.', icon: <Users size={26} />, color: 'purple', href: '#recruitment' },
+    { title: 'Recruitment & Manpower Solutions', desc: 'End-to-end workforce management from talent acquisition to staffing operations.', icon: <Users size={26} />, color: 'purple', href: '#recruitment' },
+    { title: 'Payroll Management & Audit', desc: 'Accurate payroll processing and comprehensive payroll auditing for error-free operations.', icon: <BarChart3 size={26} />, color: 'sky', href: '#payroll' },
     { title: 'Training & Development', desc: 'Building capability and competitive advantage through strategic workforce development.', icon: <GraduationCap size={26} />, color: 'green', href: '#training' },
-    { title: 'Internal Audit Services', desc: 'Expert audit readiness for BSCI, SEDEX, WRAP, GOTS, and Higg Index certifications.', icon: <ClipboardCheck size={26} />, color: 'amber', href: '#audit' },
+    { title: 'Statutory Compliance', desc: '100% adherence to Indian Labour Laws — Factories Act, EPF, ESI, CLRA, POSH and more.', icon: <Shield size={26} />, color: 'blue', href: '#statutory' },
+    { title: 'Third-Party Audit Support', desc: 'Expert audit readiness for BSCI, SEDEX, WRAP, GOTS, and Higg Index certifications.', icon: <ClipboardCheck size={26} />, color: 'amber', href: '#audit' },
+    { title: 'Documentation & Compliance Setup', desc: 'Complete paperwork management, policy drafting, and legal documentation frameworks.', icon: <FileText size={26} />, color: 'rose', href: '#documentation' },
   ];
   const c: Record<string, any> = {
     blue: { bg: 'bg-blue-500/10', icon: 'text-blue-400', border: 'hover:border-blue-500/40', tag: 'text-blue-400' },
     purple: { bg: 'bg-purple-500/10', icon: 'text-purple-400', border: 'hover:border-purple-500/40', tag: 'text-purple-400' },
     green: { bg: 'bg-emerald-500/10', icon: 'text-emerald-400', border: 'hover:border-emerald-500/40', tag: 'text-emerald-400' },
     amber: { bg: 'bg-amber-500/10', icon: 'text-amber-400', border: 'hover:border-amber-500/40', tag: 'text-amber-400' },
+    sky: { bg: 'bg-sky-500/10', icon: 'text-sky-400', border: 'hover:border-sky-500/40', tag: 'text-sky-400' },
+    rose: { bg: 'bg-rose-500/10', icon: 'text-rose-400', border: 'hover:border-rose-500/40', tag: 'text-rose-400' },
   };
   return (
     <section id="services" className="py-24 section-darker">
@@ -147,9 +149,9 @@ const ServicesOverview = () => {
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
           <span className="section-tag">Our Services</span>
           <h2 className="section-heading">Comprehensive HR Solutions</h2>
-          <p className="section-subtext">Four pillars of excellence designed for manufacturing and apparel businesses</p>
+          <p className="section-subtext">Comprehensive suite of services designed for manufacturing and apparel businesses</p>
         </motion.div>
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <motion.a key={i} variants={fadeUp} href={s.href} whileHover={{ y: -8 }} className={`service-card ${c[s.color].border} group`}>
               <div className={`w-14 h-14 ${c[s.color].bg} rounded-2xl flex items-center justify-center ${c[s.color].icon} mb-5 transition-transform group-hover:scale-110`}>{s.icon}</div>
@@ -167,10 +169,10 @@ const ServicesOverview = () => {
 /* ── Statutory Compliance ────────────────────────────── */
 const StatutoryCompliance = () => {
   const items = [
-    { title: 'Complete Legal Coverage', desc: 'Full compliance with Factories Act, EPF, ESI, CLRA, Bonus, and Gratuity regulations.', icon: <ShieldCheck size={18} /> },
-    { title: 'POSH Implementation', desc: 'Prevention of Sexual Harassment policy setup, committee formation, and ongoing management.', icon: <Shield size={18} /> },
-    { title: 'Risk Mitigation', desc: 'Proactive management of legal risks and industrial relations to protect business continuity.', icon: <Target size={18} /> },
-    { title: 'Welfare Management', desc: 'Oversight of statutory welfare provisions and systematic grievance handling procedures.', icon: <Heart size={18} /> },
+    { title: 'Labour Law Compliance', desc: 'Comprehensive adherence to EPF, ESI, CLRA, Minimum Wages, and other state/central labor laws.', icon: <ShieldCheck size={18} /> },
+    { title: 'Factory Compliance', desc: 'Securing factory licenses, approvals, and managing ongoing critical factory-level compliances.', icon: <Building2 size={18} /> },
+    { title: 'Registers & Documentation', desc: 'Accurate maintenance of all mandated statutory registers, formats, and returns.', icon: <FileText size={18} /> },
+    { title: 'Compliance Audits', desc: 'Conducting internal routine checks to identify risks and ensure 100% legal coverage continuously.', icon: <Target size={18} /> },
   ];
   return (
     <section id="statutory" className="py-24 section-dark relative overflow-hidden">
@@ -199,7 +201,7 @@ const StatutoryCompliance = () => {
               <h3 className="text-2xl font-black text-white text-center mb-2">100% Compliant</h3>
               <p className="text-slate-400 text-center text-sm mb-8">Full coverage across all Indian Labour Laws</p>
               <div className="grid grid-cols-2 gap-3">
-                {['EPF', 'ESI', 'CLRA', 'POSH', 'Factories Act', 'Gratuity', 'Bonus Act', 'Welfare'].map(law => (
+                {['Labour Law', 'Factory', 'Registers', 'Policies', 'Inspections', 'Licenses', 'Returns', 'Audits'].map(law => (
                   <div key={law} className="compliance-tag">
                     <CheckCircle size={13} className="text-blue-400 flex-shrink-0" />
                     <span className="text-sm text-slate-300 font-medium">{law}</span>
@@ -214,19 +216,21 @@ const StatutoryCompliance = () => {
   );
 };
 
-/* ── Recruitment & Payroll ───────────────────────────── */
-const RecruitmentPayroll = () => {
+/* ── Recruitment & Manpower Solutions ────────────────── */
+const RecruitmentManpower = () => {
   const features = [
-    { title: 'End-to-End Recruitment', desc: 'Managing complete manpower planning cycles, factory-level staffing requirements, and corporate onboarding processes for seamless talent integration.', icon: <UserCheck size={22} />, color: 'blue' },
-    { title: 'Payroll Excellence', desc: 'Accurate payroll processing, documentation management, and statutory deductions with zero-error compliance tracking.', icon: <BarChart3 size={22} />, color: 'purple' },
-    { title: 'Digital Transformation', desc: 'Implementing HRMS and automated payroll/attendance systems that streamline operations and improve efficiency.', icon: <Zap size={22} />, color: 'green' },
-    { title: 'Efficiency Gains', desc: 'Achieved 30% faster HR operations through digitization, reducing manual processing and improving data accuracy.', icon: <TrendingUp size={22} />, color: 'amber' },
+    { title: 'Blue-Collar & White-Collar Hiring', desc: 'Expert sourcing of both executive professionals and skilled floor workers.', icon: <Users size={22} />, color: 'blue' },
+    { title: 'Bulk Hiring for Factories', desc: 'Swift ramp-ups to meet large-scale seasonal production demands effortlessly.', icon: <TrendingUp size={22} />, color: 'purple' },
+    { title: 'Third-Party Manpower', desc: 'Flexible contract staffing solutions allowing optimized workforce management.', icon: <CheckCircle size={22} />, color: 'green' },
+    { title: 'Quick Joining Support', desc: 'Accelerated placement processes that minimize your operational downtime.', icon: <Zap size={22} />, color: 'amber' },
+    { title: 'Quality Candidate Screening', desc: 'Thorough background and capability verification confirming reliable hires.', icon: <ShieldCheck size={22} />, color: 'sky' }
   ];
   const c: Record<string, any> = {
     blue: { bg: 'bg-blue-500/10', icon: 'text-blue-400', border: 'border-blue-500/15' },
     purple: { bg: 'bg-purple-500/10', icon: 'text-purple-400', border: 'border-purple-500/15' },
     green: { bg: 'bg-emerald-500/10', icon: 'text-emerald-400', border: 'border-emerald-500/15' },
     amber: { bg: 'bg-amber-500/10', icon: 'text-amber-400', border: 'border-amber-500/15' },
+    sky: { bg: 'bg-sky-500/10', icon: 'text-sky-400', border: 'border-sky-500/15' },
   };
   return (
     <section id="recruitment" className="py-24 section-darker relative overflow-hidden">
@@ -234,8 +238,45 @@ const RecruitmentPayroll = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
           <span className="section-tag">Workforce Management</span>
-          <h2 className="section-heading">Recruitment & Payroll Services</h2>
-          <p className="section-subtext">Comprehensive workforce management solutions from talent acquisition to payroll excellence</p>
+          <h2 className="section-heading">Recruitment & Manpower Solutions</h2>
+          <p className="section-subtext">Comprehensive staffing solutions from talent acquisition to full-scale manpower deployment</p>
+        </motion.div>
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+          {features.map((f, i) => (
+            <motion.div key={i} variants={fadeUp} whileHover={{ y: -5 }} className={`feature-card border ${c[f.color].border}`}>
+              <div className={`w-12 h-12 ${c[f.color].bg} rounded-xl flex items-center justify-center ${c[f.color].icon} mb-5`}>{f.icon}</div>
+              <h3 className="text-white font-bold text-lg mb-3">{f.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-sm">{f.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+/* ── Payroll Management & Audit ──────────────────────── */
+const PayrollManagement = () => {
+  const features = [
+    { title: 'Salary Processing', desc: 'Secure, punctual end-to-end salary execution including PF, ESIC, Bonus, and Gratuity inputs.', icon: <BarChart3 size={22} />, color: 'sky' },
+    { title: 'Payroll Audit & Error Check', desc: 'In-depth reviews guaranteeing absolute calculation accuracy and eliminating leakages.', icon: <ShieldCheck size={22} />, color: 'rose' },
+    { title: 'Compliance Verification', desc: 'Meticulous cross-referencing against all statutory tax and labor deduction mandates.', icon: <ClipboardCheck size={22} />, color: 'amber' },
+    { title: 'Cost Optimization', desc: 'Strategic payroll mapping to reduce administrative overhead and streamline operations.', icon: <TrendingUp size={22} />, color: 'blue' },
+  ];
+  const c: Record<string, any> = {
+    sky: { bg: 'bg-sky-500/10', icon: 'text-sky-400', border: 'border-sky-500/15' },
+    rose: { bg: 'bg-rose-500/10', icon: 'text-rose-400', border: 'border-rose-500/15' },
+    amber: { bg: 'bg-amber-500/10', icon: 'text-amber-400', border: 'border-amber-500/15' },
+    blue: { bg: 'bg-blue-500/10', icon: 'text-blue-400', border: 'border-blue-500/15' },
+  };
+  return (
+    <section id="payroll" className="py-24 section-dark relative overflow-hidden">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-600/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
+          <span className="section-tag">Financial Accuracy</span>
+          <h2 className="section-heading">Payroll Management & Audit</h2>
+          <p className="section-subtext">Error-free payroll administration and comprehensive auditing for your entire workforce</p>
         </motion.div>
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 gap-6">
           {features.map((f, i) => (
@@ -254,10 +295,10 @@ const RecruitmentPayroll = () => {
 /* ── Training & Development ──────────────────────────── */
 const TrainingDevelopment = () => {
   const programs = [
-    { title: 'Skill Building', desc: 'Facilitating employee training sessions and monitoring workforce progress to ensure competency development.', icon: <GraduationCap size={24} />, color: 'blue' },
-    { title: 'Culture Building', desc: 'Fostering performance-driven culture and inclusive workplace environment that drives engagement.', icon: <Heart size={24} />, color: 'purple' },
-    { title: 'Talent Management', desc: 'Developing retention strategies and appraisal systems that identify and develop future leaders.', icon: <Star size={24} />, color: 'amber' },
-    { title: 'Safety Training', desc: 'Implementing comprehensive policies and training regarding employee welfare and workplace safety.', icon: <Shield size={24} />, color: 'green' },
+    { title: 'Compliance Training', desc: 'Empowering employees with crucial knowledge on legal frameworks, POSH, and safety standards.', icon: <Shield size={24} />, color: 'blue' },
+    { title: 'Workforce Skill Development', desc: 'Targeted upskilling programs to increase production efficiency and output quality.', icon: <TrendingUp size={24} />, color: 'purple' },
+    { title: 'Supervisor Training', desc: 'Leadership modules designed to help floor supervisors effectively manage teams and resolve conflicts.', icon: <Users size={24} />, color: 'amber' },
+    { title: 'HR Training Programs', desc: 'Enhancing the core capabilities of internal HR teams through updated industry best practices.', icon: <GraduationCap size={24} />, color: 'green' },
   ];
   const c: Record<string, any> = {
     blue: { bg: 'bg-blue-500/10', icon: 'text-blue-400' },
@@ -288,9 +329,9 @@ const TrainingDevelopment = () => {
   );
 };
 
-/* ── Internal Audit ──────────────────────────────────── */
-const InternalAudit = () => {
-  const audits = ['BSCI', 'SEDEX', 'WRAP', 'GOTS', 'Higg Index'];
+/* ── Third-Party Audit Support ───────────────────────── */
+const ThirdPartyAudit = () => {
+  const audits = ['SEDEX (SMETA)', 'BSCI', 'GSV', 'GOTS', 'Higg Index'];
   return (
     <section id="audit" className="py-24 section-darker relative overflow-hidden">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-amber-600/5 rounded-full blur-3xl pointer-events-none" />
@@ -301,27 +342,77 @@ const InternalAudit = () => {
               <div className="text-6xl mb-4">🏆</div>
               <div className="text-5xl font-black text-white mb-1">100%</div>
               <div className="text-amber-400 font-bold text-lg mb-2">Audit Clearance Rate</div>
-              <p className="text-slate-400 text-sm mb-8">Achieved perfect clearance records across multiple facilities and audit types</p>
+              <p className="text-slate-400 text-sm mb-8">Achieved perfect clearance records across multiple facilities for these global standards:</p>
               <div className="flex flex-wrap gap-3 justify-center">{audits.map(a => <span key={a} className="audit-tag">{a}</span>)}</div>
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <span className="section-tag">Audit Excellence</span>
-            <h2 className="section-heading">Internal Audit Services</h2>
-            <div className="space-y-5 mt-8">
-              <div className="audit-feature">
-                <div className="audit-feature-icon"><ClipboardCheck size={22} /></div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-2">Buyer Audit Readiness</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">Specialized expertise in clearing global compliance audits including BSCI, SEDEX, WRAP, GOTS, and Higg Index. We partner with senior leadership to meet global sustainability and security standards.</p>
+            <h2 className="section-heading">Third-Party Audit Support</h2>
+            <div className="space-y-4 mt-8">
+              {[
+                { title: 'Audit Preparation', desc: 'Thorough readiness training and mock audits.' },
+                { title: 'Documentation', desc: 'Organizing all necessary evidence and registers.' },
+                { title: 'Gap Analysis', desc: 'Identifying risks and executing corrective actions.' },
+                { title: 'Audit Closure', desc: 'Finalizing CAP responses to secure certification.' }
+              ].map((item, i) => (
+                <div key={i} className="audit-feature items-center py-3">
+                  <div className="audit-feature-icon shrink-0 !w-10 !h-10 text-amber-400"><CheckCircle size={18} /></div>
+                  <div>
+                    <h3 className="text-white font-bold text-base mb-1">{item.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="audit-feature">
-                <div className="audit-feature-icon"><TrendingUp size={22} /></div>
-                <div>
-                  <h3 className="text-white font-bold text-lg mb-2">Continuous Improvement</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">Coordinating with auditors and management for ongoing operational excellence and sustained compliance across all facilities.</p>
-                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ── Documentation & Compliance Setup ────────────────── */
+const DocumentationSetup = () => {
+  const items = [
+    { title: 'HR Policies', desc: 'Drafting structured employee handbooks, leave policies, and organizational frameworks.', icon: <FileText size={18} /> },
+    { title: 'Employee Records', desc: 'Systematic maintenance of personnel files and electronic employee lifecycle documentation.', icon: <Users size={18} /> },
+    { title: 'Registers & Formats', desc: 'Generation of legal statutory registers standardized according to regional labor authorities.', icon: <ClipboardCheck size={18} /> },
+    { title: 'Audit Documentation', desc: 'Maintaining organized paper trails critical for passing buyer and factory inspections.', icon: <Target size={18} /> },
+  ];
+  return (
+    <section id="documentation" className="py-24 section-dark relative overflow-hidden">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-600/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <span className="section-tag">Setup & Management</span>
+            <h2 className="section-heading">Documentation & Compliance Setup</h2>
+            <p className="text-slate-400 text-base mb-8 leading-relaxed">Establishing robust documentation frameworks to protect your business and ensure seamless operations.</p>
+            <div className="space-y-4">
+              {items.map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="compliance-item">
+                  <div className="compliance-icon text-rose-400 bg-rose-500/15">{item.icon}</div>
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">{item.title}</h4>
+                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <div className="compliance-visual !border-rose-500/20 px-8 py-12">
+              <div className="text-6xl text-center mb-4">📑</div>
+              <h3 className="text-2xl font-black text-white text-center mb-2">Organized & Compliant</h3>
+              <p className="text-slate-400 text-center text-sm mb-8">We take the paperwork burden off your shoulders</p>
+              <div className="grid grid-cols-2 gap-3">
+                {['HR Policies', 'Employee Records', 'Registers', 'Formats', 'Audit Docs', 'Handbooks'].map(doc => (
+                  <div key={doc} className="compliance-tag !bg-rose-500/10 !border-rose-500/20">
+                    <CheckCircle size={13} className="text-rose-400 flex-shrink-0" />
+                    <span className="text-sm text-slate-300 font-medium">{doc}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -331,35 +422,66 @@ const InternalAudit = () => {
   );
 };
 
+/* ── Industries & Why Choose Us ──────────────────────── */
+const ClientsIndustries = () => {
+  const industries = [
+    { title: 'Garment & Textile Industry', icon: <Building2 size={28} /> },
+    { title: 'Manufacturing Units', icon: <Target size={28} /> },
+    { title: 'Export Houses', icon: <Briefcase size={28} /> },
+    { title: 'Factories & Industrial Units', icon: <Zap size={28} /> },
+    { title: 'IT Companies', icon: <Laptop size={28} /> },
+  ];
+  return (
+    <section className="py-24 section-darker relative border-y border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
+          <span className="section-tag">Our Domains</span>
+          <h2 className="section-heading">Clients & Industries We Serve</h2>
+        </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {industries.map((ind, i) => (
+            <div key={i} className="relative rounded-2xl overflow-hidden bg-slate-800 border border-white/10 group flex flex-col items-center justify-center p-8 text-center hover:border-blue-500/30 transition-colors">
+              <div className="text-blue-400 mb-4 bg-blue-500/10 p-4 rounded-full">{ind.icon}</div>
+              <h3 className="font-bold text-white text-lg">{ind.title}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ── Why Choose RMS ──────────────────────────────────── */
 const WhyChooseUs = () => {
   const reasons = [
-    { title: 'Industry Expertise', desc: 'Specialized knowledge in Garment and Apparel export sectors with deep understanding of manufacturing challenges.', icon: <Building2 size={24} />, color: 'blue', num: '01' },
-    { title: 'Proven Results', desc: 'Track record of lowering attrition rates and driving measurable productivity improvements across facilities.', icon: <Award size={24} />, color: 'amber', num: '02' },
-    { title: 'Scalability', desc: 'Experience managing workforces from 3,000 to over 7,000 employees across multiple manufacturing facilities.', icon: <TrendingUp size={24} />, color: 'green', num: '03' },
-    { title: 'Strategic Partnership', desc: 'Aligning HR strategies with business growth and sustainability goals for long-term operational success.', icon: <Briefcase size={24} />, color: 'purple', num: '04' },
+    { title: 'Manufacturing Industry Experience', desc: 'Decades of granular operational understanding inside factory floors.', icon: <Building2 size={24} />, color: 'blue', num: '01' },
+    { title: 'Fast Recruitment Turnaround', desc: 'Extensive talent networks enabling unmatched speed-to-hire.', icon: <Zap size={24} />, color: 'amber', num: '02' },
+    { title: '100% Compliance Focus', desc: 'A zero-compromise approach ensuring total protection from liabilities.', icon: <ShieldCheck size={24} />, color: 'green', num: '03' },
+    { title: 'Practical & Result-Oriented', desc: 'Solutions designed for real-world manufacturing constraints.', icon: <Target size={24} />, color: 'purple', num: '04' },
+    { title: 'Reliable & Professional Service', desc: 'Trustworthy, transparent, and dedicated HR partnership.', icon: <Award size={24} />, color: 'rose', num: '05' },
   ];
   const c: Record<string, any> = {
     blue: { bg: 'bg-blue-500/10', icon: 'text-blue-400', num: 'text-blue-500/30' },
     amber: { bg: 'bg-amber-500/10', icon: 'text-amber-400', num: 'text-amber-500/30' },
     green: { bg: 'bg-emerald-500/10', icon: 'text-emerald-400', num: 'text-emerald-500/30' },
     purple: { bg: 'bg-purple-500/10', icon: 'text-purple-400', num: 'text-purple-500/30' },
+    rose: { bg: 'bg-rose-500/10', icon: 'text-rose-400', num: 'text-rose-500/30' },
   };
   return (
     <section className="py-24 section-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-16">
           <span className="section-tag">Why RMS</span>
-          <h2 className="section-heading">Why Choose RMS Consultancy?</h2>
-          <p className="section-subtext">Backed by years of hands-on experience in India's most demanding manufacturing environments</p>
+          <h2 className="section-heading">Why Choose Us</h2>
+          <p className="section-subtext">Partnering with you to unlock your workforce potential reliably and efficiently.</p>
         </motion.div>
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
           {reasons.map((r, i) => (
-            <motion.div key={i} variants={fadeUp} whileHover={{ y: -6 }} className="why-card relative overflow-hidden">
+            <motion.div key={i} variants={fadeUp} whileHover={{ y: -6 }} className="why-card border border-white/5 relative overflow-hidden">
               <div className={`absolute top-4 right-4 text-5xl font-black ${c[r.color].num} leading-none select-none`}>{r.num}</div>
-              <div className={`w-14 h-14 ${c[r.color].bg} rounded-2xl flex items-center justify-center ${c[r.color].icon} mb-5`}>{r.icon}</div>
-              <h3 className="text-white font-bold text-lg mb-3">{r.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
+              <div className={`w-14 h-14 ${c[r.color].bg} rounded-2xl flex items-center justify-center ${c[r.color].icon} mb-5 relative z-10`}>{r.icon}</div>
+              <h3 className="text-white font-bold text-lg mb-3 relative z-10">{r.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed relative z-10">{r.desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -368,55 +490,38 @@ const WhyChooseUs = () => {
   );
 };
 
-/* ── About Founder ───────────────────────────────────── */
+/* ── About Us (Mission, Vision, Founder) ─────────────── */
 const AboutFounder = () => {
-  const achievements = [
-    'Former Chief Human Resource Officer at IR Exports Pvt. Ltd.',
-    'Managed HR operations for 7,000+ employees across multiple manufacturing facilities',
-    'Implemented digital HRMS systems reducing processing time by 30%',
-    'Established robust compliance frameworks for large-scale manufacturing operations',
-    'Built high-performance cultures in complex manufacturing environments',
-    'MBA from Sharda University — specializing in Human Resources & Finance',
-  ];
   return (
     <section id="about" className="py-24 section-darker relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/8 via-transparent to-purple-900/8 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <div className="founder-card mb-8">
+              <h3 className="flex items-center gap-3 text-2xl font-black text-white mb-4"><Target className="text-blue-400" /> Our Mission</h3>
+              <p className="text-slate-400 leading-relaxed text-base">To provide reliable, efficient, and compliant HR solutions that support business growth and workforce excellence.</p>
+            </div>
             <div className="founder-card">
-              <div className="flex justify-center mb-6">
-                <div className="founder-avatar animate-pulse-glow"><span className="text-5xl">👩‍💼</span></div>
-              </div>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-black text-white">Rakhi Mishra</h3>
-                <p className="text-blue-400 font-semibold mt-1">MBA in HR & Finance | 12+ Years Experience</p>
-                <p className="text-slate-500 text-sm mt-1">Founder & Principal Consultant</p>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                {[['12+', 'Years Experience'], ['7,000+', 'Employees Managed'], ['100%', 'Audit Clearance'], ['30%', 'Efficiency Gains']].map(([v, l]) => (
-                  <div key={l} className="founder-stat">
-                    <div className="text-xl font-black text-white">{v}</div>
-                    <div className="text-xs text-slate-500 mt-1">{l}</div>
-                  </div>
-                ))}
-              </div>
+              <h3 className="flex items-center gap-3 text-2xl font-black text-white mb-4"><Star className="text-purple-400" /> Our Vision</h3>
+              <p className="text-slate-400 leading-relaxed text-base">To become a trusted partner for industries in Recruitment, Compliance, and Global Audit Solutions.</p>
             </div>
           </motion.div>
+
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-            <span className="section-tag">About the Founder</span>
-            <h2 className="section-heading">Rakhi Mishra</h2>
-            <p className="text-slate-400 text-base leading-relaxed mb-8">
-              Former Chief Human Resource Officer at IR Exports Pvt. Ltd., where she successfully managed HR operations and compliance for over 7,000 employees across multiple manufacturing facilities. Her proven track record includes implementing digital HRMS systems, establishing robust compliance frameworks, and building high-performance cultures.
-            </p>
-            <div className="space-y-3">
-              {achievements.map((a, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="achievement-item">
-                  <CheckCircle size={16} className="text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-sm">{a}</span>
-                </motion.div>
-              ))}
+            <span className="section-tag">Leadership</span>
+            <h2 className="section-heading mt-2">Guided by Experience</h2>
+            <div className="founder-card mt-8">
+              <div className="flex gap-6 items-center mb-6">
+                <div className="founder-avatar animate-pulse-glow shrink-0"><span className="text-4xl">👩‍💼</span></div>
+                <div>
+                  <h3 className="text-2xl font-black text-white">Rakhi Mishra</h3>
+                  <p className="text-blue-400 font-semibold mt-1">Founder & Principal Consultant</p>
+                </div>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                Former Chief Human Resource Officer at IR Exports Pvt. Ltd., managing HR and compliance for 7,000+ employees across manufacturing facilities. Rakhi holds an MBA in Human Resources & Finance and brings over 12 years of specialized operational expertise.
+              </p>
             </div>
           </motion.div>
         </div>
@@ -512,8 +617,8 @@ const Contact = () => {
 
   const info = [
     { icon: <MapPin size={18} />, label: 'Location', value: 'Gurugram, Haryana, India', href: null },
-    { icon: <Phone size={18} />, label: 'Phone', value: '+91-9015248124', href: 'tel:+919015248124' },
-    { icon: <Mail size={18} />, label: 'Email', value: 'rakhimishra57@gmail.com', href: 'mailto:rakhimishra57@gmail.com' },
+    { icon: <Phone size={18} />, label: 'Phone', value: '+91-9560118227', href: 'tel:+919560118227' },
+    { icon: <Mail size={18} />, label: 'Email', value: 'info@rmsconsultancyservices.com', href: 'mailto:info@rmsconsultancyservices.com' },
     { icon: <Linkedin size={18} />, label: 'LinkedIn', value: 'Rakhi Mishra', href: 'https://www.linkedin.com/in/rakhi-mishra' },
   ];
 
@@ -579,10 +684,12 @@ const Contact = () => {
                 <label className="form-label">Service Interested In</label>
                 <select className="form-input" name="Service">
                   <option value="">Select a service...</option>
-                  <option value="Statutory Compliance">Statutory Compliance</option>
-                  <option value="Recruitment & Payroll">Recruitment & Payroll</option>
+                  <option value="Recruitment & Manpower Solutions">Recruitment & Manpower Solutions</option>
+                  <option value="Payroll Management & Audit">Payroll Management & Audit</option>
                   <option value="Training & Development">Training & Development</option>
-                  <option value="Internal Audit Services">Internal Audit Services</option>
+                  <option value="Statutory Compliance">Statutory Compliance</option>
+                  <option value="Third-Party Audit Support">Third-Party Audit Support</option>
+                  <option value="Documentation & Compliance Setup">Documentation & Compliance Setup</option>
                   <option value="Other / General Inquiry">Other / General Inquiry</option>
                 </select>
               </div>
@@ -680,7 +787,14 @@ const Footer = () => (
         <div>
           <h5 className="font-bold text-white text-xs uppercase tracking-widest mb-5">Services</h5>
           <ul className="space-y-2">
-            {[['Statutory Compliance', '#statutory'], ['Recruitment & Payroll', '#recruitment'], ['Training & Development', '#training'], ['Internal Audit Services', '#audit']].map(([n, h]) => (
+            {[
+              ['Recruitment & Manpower Solutions', '#recruitment'],
+              ['Payroll Management & Audit', '#recruitment'],
+              ['Training & Development', '#training'],
+              ['Statutory Compliance', '#statutory'],
+              ['Third-Party Audit Support', '#audit'],
+              ['Documentation & Compliance Setup', '#statutory']
+            ].map(([n, h]) => (
               <li key={n}><a href={h} className="text-slate-500 hover:text-blue-400 transition-colors text-sm">{n}</a></li>
             ))}
           </ul>
@@ -712,10 +826,13 @@ export default function App() {
       <Navbar />
       <Hero />
       <ServicesOverview />
-      <StatutoryCompliance />
-      <RecruitmentPayroll />
+      <RecruitmentManpower />
+      <PayrollManagement />
       <TrainingDevelopment />
-      <InternalAudit />
+      <StatutoryCompliance />
+      <ThirdPartyAudit />
+      <DocumentationSetup />
+      <ClientsIndustries />
       <WhyChooseUs />
       <AboutFounder />
       <Resources />
