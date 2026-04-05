@@ -29,6 +29,20 @@ const Navbar = () => {
     { name: 'About', href: '#about' }, { name: 'Resources', href: '#resources' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    setTimeout(() => {
+      const targetElement = document.getElementById(href.replace('#', ''));
+      if (targetElement) {
+        // Offset by ~80px for the fixed header
+        const y = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <nav
       className="fixed w-full z-50 transition-all duration-500"
@@ -51,11 +65,11 @@ const Navbar = () => {
         </a>
         <div className="hidden md:flex items-center gap-7">
           {links.map(l => (
-            <a key={l.name} href={l.href} className="text-slate-400 hover:text-white font-medium text-sm transition-colors">
+            <a key={l.name} href={l.href} onClick={(e) => handleNavClick(e, l.href)} className="text-slate-400 hover:text-white font-medium text-sm transition-colors">
               {l.name}
             </a>
           ))}
-          <a href="#contact" className="btn-primary text-sm px-5 py-2.5">Schedule Consultation</a>
+          <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="btn-primary text-sm px-5 py-2.5">Schedule Consultation</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden text-white p-2">
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -67,10 +81,10 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }} className="md:hidden nav-glass border-t border-white/10 overflow-hidden">
             <div className="px-5 py-6 space-y-3">
               {links.map(l => (
-                <a key={l.name} href={l.href} onClick={() => setOpen(false)}
+                <a key={l.name} href={l.href} onClick={(e) => handleNavClick(e, l.href)}
                   className="block text-slate-300 font-medium py-2 border-b border-white/5">{l.name}</a>
               ))}
-              <a href="#contact" onClick={() => setOpen(false)} className="btn-primary block text-center mt-4">
+              <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="btn-primary block text-center mt-4">
                 Schedule Consultation
               </a>
             </div>
@@ -593,7 +607,7 @@ const Contact = () => {
     setStatus('sending');
     try {
       const formData = new FormData(e.currentTarget);
-      const res = await fetch('https://formsubmit.co/rakhimishra57@gmail.com', {
+      const res = await fetch('https://formsubmit.co/info@rmsconsultancyservices.com', {
         method: 'POST',
         headers: {
           'Accept': 'application/json'

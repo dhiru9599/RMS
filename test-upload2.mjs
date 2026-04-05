@@ -5,8 +5,8 @@ import fs from 'fs';
 async function test() {
   const formData = new FormData();
   formData.append('Name', 'Test Fetch JSON');
-  
-  const res = await fetch('https://formsubmit.co/rakhimishra57@gmail.com', {
+
+  const res = await fetch('https://formsubmit.co/info@rmsconsultancyservices.com', {
     method: 'POST',
     headers: { 'Accept': 'application/json' },
     body: formData

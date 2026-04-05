@@ -4,7 +4,7 @@ async function test() {
   formData.append('Name', 'Test FormSubmit');
   formData.append('attachment', new Blob(['test content'], {type: 'text/plain'}), 'test.txt');
 
-  const res = await fetch('https://formsubmit.co/ajax/rakhimishra57@gmail.com', {
+  const res = await fetch('https://formsubmit.co/ajax/info@rmsconsultancyservices.com', {
     method: 'POST',
     body: formData,
     headers: {
