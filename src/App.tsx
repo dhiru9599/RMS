@@ -3,7 +3,7 @@ import {
   Users, Target, Mail, Phone, MapPin, Menu, X, ChevronRight,
   TrendingUp, ShieldCheck, Award, CheckCircle, ArrowRight, BarChart3,
   Building2, ClipboardCheck, GraduationCap, Shield, Zap, Star, Laptop,
-  UserCheck, Calendar, Download, Linkedin, Briefcase, FileText, Upload,
+  UserCheck, Calendar, Download, Linkedin, Instagram, Briefcase, FileText, Upload,
   Sun, Moon, MessageCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -693,7 +693,8 @@ const Contact = () => {
     { icon: <Phone size={18} />, label: 'Phone', value: '+91-9560118227', href: 'tel:+919560118227' },
     { icon: <MessageCircle size={18} />, label: 'WhatsApp', value: '+91-9560118227', href: 'https://wa.me/919560118227' },
     { icon: <Mail size={18} />, label: 'Email', value: 'info@rmsconsultancyservices.com', href: 'mailto:info@rmsconsultancyservices.com' },
-    { icon: <Linkedin size={18} />, label: 'LinkedIn', value: 'Rakhi Mishra', href: 'https://www.linkedin.com/in/rakhi-mishra' },
+    { icon: <Linkedin size={18} />, label: 'LinkedIn', value: 'RMS Consultancy Services', href: 'https://www.linkedin.com/in/rms-consultancy-services-07a236401?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+    { icon: <Instagram size={18} />, label: 'Instagram', value: '@rmsconsultancyservices', href: 'https://www.instagram.com/rmsconsultancyservices?utm_source=qr&igsh=MWdtd3p3ZG55bXZlbQ==' },
   ];
 
   return (
@@ -717,7 +718,7 @@ const Contact = () => {
                     <div className="contact-info-icon">{item.icon}</div>
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--text-light)' }}>{item.label}</div>
-                      {item.href ? <a href={item.href} target={item.label === 'WhatsApp' || item.label === 'LinkedIn' ? '_blank' : undefined} rel="noreferrer" className="text-sm font-semibold transition-colors" style={{ color: 'var(--text-secondary)' }}
+                      {item.href ? <a href={item.href} target={['WhatsApp', 'LinkedIn', 'Instagram'].includes(item.label) ? '_blank' : undefined} rel="noreferrer" className="text-sm font-semibold transition-colors" style={{ color: 'var(--text-secondary)' }}
                         onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                         onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}>{item.value}</a> : <div className="text-sm font-semibold" style={{ color: 'var(--text-secondary)' }}>{item.value}</div>}
                     </div>
@@ -857,8 +858,11 @@ const Footer = () => (
             <a href="tel:+919560118227" className="footer-social-link"><Phone size={15} /></a>
             <a href="https://wa.me/919560118227" target="_blank" rel="noreferrer" className="footer-social-link"><MessageCircle size={15} /></a>
             <a href="mailto:info@rmsconsultancyservices.com" className="footer-social-link"><Mail size={15} /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="footer-social-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>
+            <a href="https://www.linkedin.com/in/rms-consultancy-services-07a236401?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="footer-social-link">
+              <Linkedin size={15} />
+            </a>
+            <a href="https://www.instagram.com/rmsconsultancyservices?utm_source=qr&igsh=MWdtd3p3ZG55bXZlbQ==" target="_blank" rel="noreferrer" className="footer-social-link">
+              <Instagram size={15} />
             </a>
           </div>
         </div>
